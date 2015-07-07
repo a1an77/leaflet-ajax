@@ -553,6 +553,14 @@ L.Util.ajax = function(url, options) {
 					if(!request.status){
 						reject('Attempted cross origin request without CORS enabled');
 					}else{
+/* jshint ignore:start */
+						if  ( request.status == 400 ) {
+							alert("Error in request: ".concat(request.responseText));
+						}
+						if ( request.status == 500 ) {
+							alert("Internal Server error! Url: ".concat(url));
+						}
+/* jshint ignore:end */
 						reject(request.statusText);
 					}
 				}
