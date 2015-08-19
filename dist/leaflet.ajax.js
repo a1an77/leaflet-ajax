@@ -570,6 +570,9 @@ L.Util.ajax = function(url, options) {
 	});
 	out.then(null,function(reason){
 		request.abort();
+	        if (typeof L.Util.ajax_onFailed == 'function' ) {
+	            L.Util.ajax_onFailed();
+	        }
 		return reason;
 	});
 	out.abort = cancel;
